@@ -57,8 +57,10 @@ export class AppComponent {
   solveExpr() {
     this.countOperators();
     if ( this.operatorCount > 1 ) {
-      if ( this.newExpr.includes("--") ) {
-        console.log("--");
+      if (
+        this.operatorCount == 2 &&
+        this.newExpr.includes("--")
+      ) {
         this.newExpr = this.newExpr.replace("--", "+");
         this.lastResult = eval( this.newExpr.slice(0, -1) );
         this.newExpr = "_";
