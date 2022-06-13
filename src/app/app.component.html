@@ -7,41 +7,40 @@
     <mat-card-subtitle>Material-Angular-style</mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
-    <p class="memory">M=55</p>
-    <p class="lastCalc">55</p>
-    <p class="newCalc">2&times;5</p>
+  <mat-card-content class="display">
+    <div><p *ngIf="memory" class="memory">{{ memory }}</p></div>
+    <div><p *ngIf="power" class="lastResult">{{ lastResult }}</p></div>
+    <div><p *ngIf="power" class="newExpr">{{ newExpr }}</p></div>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="warn">ON</button>
-    <button mat-raised-button color="warn">OFF</button>
-    <button mat-raised-button color="accent">M +</button>
-    <button mat-raised-button color="accent">M -</button>
-    <button mat-raised-button color="accent">MCL</button>
+    <button (click)="turnOn()" mat-raised-button color="warn">ON</button>
+    <button (click)="turnOff()" mat-raised-button color="warn">OFF</button>
+    <button (click)="addMemoryToExpr()" mat-raised-button color="accent">M</button>
+    <button (click)="addToMemory()" mat-raised-button color="accent">M+</button>
+    <button (click)="deductFromMemory()" mat-raised-button color="accent">M-</button>
 
-    <button mat-raised-button color="primary">7</button>
-    <button mat-raised-button color="primary">8</button>
-    <button mat-raised-button color="primary">9</button>
-    <button mat-raised-button color="accent">&radic;</button>
-    <button mat-raised-button color="accent">CE</button>
+    <button (click)="insertChar('7')" mat-raised-button color="primary">7</button>
+    <button (click)="insertChar('8')" mat-raised-button color="primary">8</button>
+    <button (click)="insertChar('9')" mat-raised-button color="primary">9</button>
+    <button (click)="solveSqrt()" mat-raised-button color="accent">&radic;</button>
+    <button (click)="clearMemory()" mat-raised-button color="accent">MCL</button>
 
-    <button mat-raised-button color="primary">4</button>
-    <button mat-raised-button color="primary">5</button>
-    <button mat-raised-button color="primary">6</button>
-    <button mat-raised-button color="accent">&times;</button>
-    <button mat-raised-button color="accent">&#247;</button>
+    <button (click)="insertChar('4')" mat-raised-button color="primary">4</button>
+    <button (click)="insertChar('5')" mat-raised-button color="primary">5</button>
+    <button (click)="insertChar('6')" mat-raised-button color="primary">6</button>
+    <button (click)="insertChar('*')" mat-raised-button color="accent">*</button>
+    <button (click)="insertChar('/')" mat-raised-button color="accent">/</button>
 
-    <button mat-raised-button color="primary">1</button>
-    <button mat-raised-button color="primary">2</button>
-    <button mat-raised-button color="primary">3</button>
-    <button mat-raised-button color="accent">-</button>
-    <button mat-raised-button color="accent" class="equals">=</button>
+    <button (click)="insertChar('1')" mat-raised-button color="primary">1</button>
+    <button (click)="insertChar('2')" mat-raised-button color="primary">2</button>
+    <button (click)="insertChar('3')" mat-raised-button color="primary">3</button>
+    <button (click)="insertChar('-')" mat-raised-button color="accent">-</button>
+    <button (click)="solveExpr()" mat-raised-button color="accent" class="equals">=</button>
 
-    <button mat-raised-button color="primary">0</button>
-    <button mat-raised-button color="primary">.</button>
-    <button mat-raised-button color="accent">+ / -</button>
-    <button mat-raised-button color="accent">+</button>
-    <!-- <button mat-raised-button color="accent">=</button> -->
+    <button (click)="insertChar('0')" mat-raised-button color="primary">0</button>
+    <button (click)="insertChar('.')" mat-raised-button color="primary">.</button>
+    <button (click)="solveSignChange()" mat-raised-button color="accent">+ / -</button>
+    <button (click)="insertChar('+')" mat-raised-button color="accent">+</button>
   </mat-card-actions>
 </mat-card>
