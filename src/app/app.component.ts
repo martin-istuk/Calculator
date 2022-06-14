@@ -26,11 +26,9 @@ export class AppComponent {
   }
 
   turnOff() {
-    this.power = false;
+    this.turnOn();
     this.memory = "";
-    this.lastResult = "";
-    this.newExpr = "_";
-    this.operatorCount = 0;
+    this.power = false;
   }
 
   insertChar(char: string) {
